@@ -9,13 +9,21 @@ class UserChoiceRedirection {
         while (true) {
             const choiceOperation = await userChoiceOperation.takeInput("Enter Operation You Want to Perform in Stack: ");
             if (choiceOperation.toLowerCase() == 'exit') break;
-            switch (choiceOperation) {
-                case '1':
-                    stackOperation.push();
-                    break;
-                default:
-                    stackOperation.invalidOperation();
-                    break;
+            const operationMap = {
+                '1': () => stackOperation.push(),
+                '2': () => stackOperation.pop(),
+                '3': () => stackOperation.peek(),
+                '4': () => stackOperation.isEmpty(),
+                '5': () => stackOperation.size(),
+                '6': () => stackOperation.clear(),
+                '7': () => stackOperation.search(),
+            };
+            
+            const operation = operationMap[choiceOperation];
+            if (operation) {
+                await operation();
+            } else {
+                stackOperation.invalidOperation();
             }
         }
     }
