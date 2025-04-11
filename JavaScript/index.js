@@ -1,24 +1,28 @@
 const UserChoiceRedirection = require('./app');
 const ReusableFunctions = require('./logic/ReusableFunctions');
-console.log('Enter 1 for Stack\t' + 'Enter 2 for Queue');
-console.log('Enter exit for Exiting from program\n');
 
 const askUserChoice = new ReusableFunctions();
 const callDsa = new UserChoiceRedirection();
 
 //Option 1:
 (async () => {
+    askUserChoice.logChoiceList();
     while (true) {
         const userChoice = await askUserChoice.takeInput("Enter Your Choice: ");
-        switch (userChoice) {
-            case '1':
-                await callDsa.stack();
-                break;
-            case '2':
-                await callDsa.queue();
-                break;
-            default:
-                userChoice.toLowerCase() == 'exit' ? process.exit() : callDsa.invalidChoice();
+        const dsaChoice = {
+            '1': () => callDsa.stack(),
+            '2': () => callDsa.queue(),
+        }
+        const action = dsaChoice[userChoice];
+        if (action) {
+            await action();
+        } else if (userChoice.toLowerCase() == 'exit') {
+            process.exit();
+        } else if (userChoice.toLowerCase() == 'cls') {
+            console.clear();
+            askUserChoice.logChoiceList();
+        } else {
+            console.log("Invalid Choice");
         }
     }
 })();

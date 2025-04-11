@@ -14,6 +14,10 @@ class ReusableFunctions {
         })
         return answer;
     }
+    async logChoiceList() {
+        console.log('Enter 1 for Stack\t' + 'Enter 2 for Queue');
+        console.log('Enter cls for clearing console.\n' + 'Enter exit for Exiting from program.\n');
+    }
 }
 
 module.exports = ReusableFunctions;

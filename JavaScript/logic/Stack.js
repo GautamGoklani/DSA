@@ -12,9 +12,13 @@ class StackClass {
     }
     async push() {
         const pushElement = await stackElement.takeInput("Enter Element to be Pushed: ");
-        //this.items.push(pushElement);
-        this.items = [...this.items, pushElement];
-        console.log("Pushed the Element Successfully!");
+        if (pushElement == "") {
+            console.log("Element Push Unsuccessful: No Input Error");
+        } else {
+            this.items = [...this.items, pushElement];
+            //this.items.push(pushElement);
+            console.log("Pushed the Element Successfully!");
+        }
     }
     async pop() {
         if (this.items.length > 0) {
@@ -35,7 +39,7 @@ class StackClass {
         }
     }
     async isEmpty() {
-        this.items[0] != undefined ? console.log("Stack is Not Empty") : console.log("Stack is Empty");
+        this.items[0] ? console.log("Stack is Not Empty") : console.log("Stack is Empty");
     }
     async size() {
         const stackSize = this.items.length;
@@ -43,8 +47,13 @@ class StackClass {
     }
     async clear() {
         if (this.items.length > 0) {
-            const clearStackChoice = await stackElement.takeInput("Enter Y for Clearing Stack & N for Canceling the Operation: ");
-            if (clearStackChoice.toLowerCase() === 'y') this.items = [];
+            const clearStackChoice = await stackElement.takeInput("Enter Y for Clearing Stack: ");
+            if (clearStackChoice.toLowerCase() === 'y') {
+                this.items = [];
+                console.log("Cleared Stack Successfully!");
+            } else {
+                console.log("Cancelled the Clear Operation!");
+            }
         } else {
             console.log("Stack is already empty");
         }
@@ -55,18 +64,19 @@ class StackClass {
             return;
         }
         const searchElement = await stackElement.takeInput("Enter Element to be Searched: ");
-        for (let i = 0; i < this.items.length; i++) {
-            if (this.items[i] == searchElement) {
-                console.log(this.items[i] + " is in the Stack");
-                return;
-            } else if (this.items[i] >= this.items.length - 1 && this.items[i] != searchElement) {
-                console.log(searchElement + " is not in the Stack");
-                return;
+        if (searchElement == "") {
+            console.log("Element Search Unsuccessful: No Input Error");
+        } else {
+            for (let i = 0; i < this.items.length; i++) {
+                if (this.items[i] == searchElement) {
+                    console.log(searchElement + " is in the Stack!");
+                    return;
+                } else if (i >= this.items.length - 1) {
+                    console.log(searchElement + " is not in the Stack!");
+                    return;
+                }
             }
         }
-    }
-    async invalidOperation() {
-        console.log("Invalid Operation Choice");
     }
 }
 
