@@ -12,6 +12,8 @@ const callDsa = new UserChoiceRedirection();
         const dsaChoice = {
             '1': () => callDsa.stack(),
             '2': () => callDsa.queue(),
+            '3': () => callDsa.stackLl(),
+            '4': () => callDsa.queueLl(),
         }
         const action = dsaChoice[userChoice];
         if (action) {

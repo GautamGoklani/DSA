@@ -16,6 +16,7 @@ class ReusableFunctions {
     }
     async logChoiceList() {
         console.log('Enter 1 for Stack\t' + 'Enter 2 for Queue');
+        console.log('Enter 3 for Stack With Linked List\t' + 'Enter 4 for Queue With Linked List');
         console.log('Enter cls for clearing console.\n' + 'Enter exit for Exiting from program.\n');
     }
 }

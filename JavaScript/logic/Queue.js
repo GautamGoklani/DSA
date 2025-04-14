@@ -71,6 +71,8 @@ class QueueClass {
                     }
                 }
             }
+        } else {
+            console.log("Queue is Already Empty!");
         }
     }
 }
