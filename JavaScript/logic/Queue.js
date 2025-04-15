@@ -52,7 +52,7 @@ class QueueClass {
                 console.log("Cancelled the Clear Operation!");
             }
         } else {
-            console.log("Stack is already Empty!");
+            console.log("Queue is already Empty!");
         }
     }
     async search() {
