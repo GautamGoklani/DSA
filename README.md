@@ -5,7 +5,7 @@ This repository contains a comprehensive collection of Data Structures and Algor
 
 | Sr No. | Problem                        | Languages         |
 |--------|--------------------------------|-------------------|
-| 1.     | Stack                          | JavaScript        |
+| 1.     | Stack                          | JavaScript, CPP   |
 | 2.     | Queue                          | JavaScript        |
 | 3.     | Stack With Linked List         | JavaScript        |
 | 4.     | Queue With Linked List         | JavaScript        |
